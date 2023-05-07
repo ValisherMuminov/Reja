@@ -1,6 +1,7 @@
 
 console.log("Web Serverni boshlash");
 const express = require("express");
+const res = require("express/lib/response");
 const app = express();   //intance yani expressni obj ni yuboradi
 const http = require("http"); //http core module
 
@@ -21,17 +22,16 @@ app.set("view engine", "ejs"); //view engine ejs ekanligini korsatyabmiz// Tradi
 // 4 Routing
 // Rooterlar shakllantirish
 //bunda biz browserdagi link/ni yonaltirish, yani browser= boshqa oynaga olib otishni boshqarish
-app.get("/hello", function (req, res) {
-    // res.end("HELLO WORLD");
-    // res.end("<h1>HELLO WORLD</h1>");
-    res.end(`<h1 style="background: red">HELLO WORLD by belli</h1>`);
+app.post("/create-item", (req, res) => {
+  console.log(req.body);
+  res.json({ test: "success" });
 });
-app.get("/gift", function (req, res) {
-  // res.end("HELLO WORLD");
-  // res.end("<h1>HELLO WORLD</h1>");
-  res.end(`<h1 style="background: green">Siz sovgalar bolimidasiz</h1>`);
+app.get("/", function (req, res) {
+  res.render("harid");
+  
 });
-// localhost:3000/gift shunde qib bir necha adress/ hosilqilish m/n
+
+// localhost:3000 shunde qib bir necha adress/ hosilqilish m/n
 // Serverga appni Path qilish
 const server = http.createServer(app);  // server hosil qilish  http orqali
 let PORT = 3000;
