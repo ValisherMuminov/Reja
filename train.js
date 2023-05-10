@@ -1,22 +1,136 @@
 
+//==================================<  ASYNC  function >=============================================
 
-// Task - C
-//Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin///Masalan: checkLetters("carselon", "arlocesn") return qilish kerak true, checkLetters("dog", "game") return false
-function checkLetters(word_x, word_y) {
-  const x = word_x.split("");
-  const y = word_y.split("");
-  x.sort();
-  y.sort();
-  //return x.join('') === y.join('');
-  if (x.length !== y.length) {
-    return false;
+// ASYNC  function
+console.log("Jack Ma maslahatlari");
+const list_1 = [
+  "yahshi talaba bo'ling", //0-20
+  "togri boshliq tanlang va koproq xato qiling", // 20-30
+  "uzingiz ishlashni boshlang", // 30-40
+  "siz kuchli bo'lgan narsalarni qiling", // 40-50
+  "yoshlarga investitsiya qiling", // 50-60
+  "endi dam oling, foydasi yo'q", // 60
+];
+
+// Defination
+async function maslahatlarBering(a) {
+  if (typeof a !== "number") throw new Error("insert a number");
+  else if (a <= 20) return list_1[0];
+  else if (a > 20 && a <= 30) return list_1[1];
+  else if (a > 30 && a <= 40) return list_1[2];
+  else if (a > 40 && a <= 50) return list_1[3];
+  else if (a > 50 && a <= 60) return list_1[4];
+  else {
+    return list_1[5];
+
+      // Promise function ichida core module ishlidi setTimeout, setInterval(asyncda ishlamidi)
+        // return new Promise((resolve, reject) => {     // Keyinchalik shunde qilsayam boladi
+        // //setInterval(() => {
+        //     resolve(list_1[5]);
+        //   }, 1000);
+        // });
+    
+    // return new Promise((resolve, reject) => {
+    //   setTimeout(function () {
+    //     resolve(list_1[5]);
+    //     }, 5000);
+    //   });
   }
 }
-//let test = checkLetters("carselon", "lnocrsae");
-let test = checkLetters("dog", "game");
-console.log(test);
+    
 
-// Task - B
+// Call via then/catch
+
+// maslahatlarBering(20)
+// .then((data) => {
+//   maslahatlarBering(30)
+//     .then((data) => {
+//       maslahatlarBering(40)
+//         .then((data) => {
+//           console.log("javob:", data);  // 1 usul bunde qib yozsayam boladi lekin codimiz juda noqulay bop ketadi
+//         })
+//         .catch((err) => {
+//           console.log("ERROR:", err);
+//         });
+//       console.log("javob:", data);
+//     })
+//     .catch((err) => {
+//       console.log("ERROR:", err);
+//     });
+//   console.log('javob:', data);
+// })
+// .catch((err) => {
+//   console.log("ERROR:", err);
+// });
+
+// Call via asyn/await   bu callback promise dan qutulishga yordam beradi
+
+async function run() {                         // 2 usul bunde qib yozsa qulay boladi
+  let javob = await maslahatlarBering(20); // ASYNC fda await  javob olmaguncha keyingisiga otmidi
+  console.log(javob);
+  javob = await maslahatlarBering(31);
+  console.log(javob);
+  javob = await maslahatlarBering(41);   // bunde holat/ pr-ng da juda kop va bunde joylada async va promise f/ yordamga keladi
+  console.log(javob);
+}
+run();
+
+//==================================< CALBACK function >=============================================
+
+// CALBACK function
+
+// console.log("Jack Ma maslahatlari");
+// const list = [
+//   "yahshi talaba boling", //0-20
+//   "togri boshliq tanlang va koproq xato qiling", // 20-30
+//   "uzingiz ishlashni boshlang", // 30-40
+//   "siz kuchli bolgan narsalarni qiling", // 40-50
+//   "yoshlarga investitsiya qiling", // 50-60
+//   "endi dam oling, foydasi yoq", // 60
+// ];
+
+// function maslahatlarBering(a, callback) {
+//   if (typeof a !== "number") callback("insert a number", null);
+//   else if (a <= 20) callback(null, list[0]);
+//   else if (a > 20 && a <= 30) callback(null, list[1]);
+//   else if (a > 30 && a <= 40) callback(null, list[2]);
+//   else if (a > 40 && a <= 50) callback(null, list[3]);
+//   else if (a > 50 && a <= 60) callback(null, list[4]);
+//   else {
+//     setTimeout(function () {
+//       callback(null, list[5]);
+//     }, 5000);
+//   }
+// }
+// console.log("passed here 0");
+// maslahatlarBering("salom", (err, data) => {
+//   if (err) console.log("ERROR:", err);
+//   else {
+//     console.log("javob:", data);
+//   }
+// });
+// console.log("passed here 1");
+//const server = http.createServer(app);  //single thread shu app hamma request/ shunga keladi shuni band qilmaslik un 1 usul: callback dan faydalanish
+
+//==================================< Task - C >=============================================
+
+//Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin///Masalan: checkLetters("carselon", "arlocesn") return qilish kerak true, checkLetters("dog", "game") return false
+
+// function checkLetters(word_x, word_y) {
+//   const x = word_x.split("");
+//   const y = word_y.split("");
+//   x.sort();
+//   y.sort();
+//   //return x.join('') === y.join('');
+//   if (x.length !== y.length) {
+//     return false;
+//   }
+// }
+// //let test = checkLetters("carselon", "lnocrsae");
+// let test = checkLetters("dog", "game");
+// console.log(test);
+//==================================< Task - B >=============================================
+
 // Shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, faqat positive positive qiymatlarni olib return qilsin
 // function getPositive(numbers) {
 //   const positive_Number = numbers.filter((num) => num > 0);
@@ -26,7 +140,8 @@ console.log(test);
 // positive_Numbers = getPositive(numbers);
 // console.log("Positive Numbers", positive_Numbers);
 
-// Task - A
+//==================================< Task - A >=============================================
+
 // Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak.
 // function countLetter(a, b) {
 //   const x = b.split("");

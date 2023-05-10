@@ -36,14 +36,14 @@ app.post("/create-item", (req, res) => {
 });
 
 app.get("/author", function (req, res) {
-  res.render("author", {user: user});
+  res.render("author", { user: user });
 });
 app.get("/", function (req, res) {
   res.render("harid");
 });
 
 
-const server = http.createServer(app);  
+const server = http.createServer(app);  //single thread shu app hamma req res larga javob beradi shuni band qilmaslik un 1 usul: callback dan faydalanish
 let PORT = 3000;
 server.listen(PORT, function () {
     console.log(`The server is running successfully on port: ${PORT}`);

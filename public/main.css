@@ -369,6 +369,7 @@
   margin-bottom: 33px;
 }
 .midd_frame-btn {
+  border: 2px solid greenyellow;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -377,10 +378,11 @@
   gap: 10px;
   width: 154px;
   height: 40px;
-  background: #ffb400;
+  background: #53514e;
   border-radius: 5px;
   margin-left: 56px;
 }
+
 .midd_frame-btn h1 {
   position: relative;
   width: 80px;
@@ -393,7 +395,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: #2b2b2b;
+  color: white;
   margin-top: 5px;
 }
 .midd_frame-btn-img {
