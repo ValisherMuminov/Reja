@@ -1,27 +1,87 @@
 
+
+
+
+//==================================< Task - D >=============================================
+
+/*  D-Task: Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin,
+ hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul.
+  Har bir method ishga tushgan vaqt ham log qilinsin.
+ Masalan: const shop = new Shop(4, 5, 2); shop.qoldiq() 
+ return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud!
+ shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() 10, "minutes" time
+  return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!*/
+
+const moment = require("moment");
+let time = moment();
+// const minut_oldin = time.add(10, "minutes").format("HH:mm");
+// const time = moment().format("HH:mm"); 
+class Shop {
+  constructor(non, lagmon, cola) {
+    this.non = non;
+    this.lagmon = lagmon;
+    this.cola = cola;
+  }
+ 
+
+  sotish(maxsulot, son) {
+    if (maxsulot == "non") {
+      return (this.non -= son);
+    } else if (maxsulot == "lagmon") {
+      return (this.lagmon -= son);
+    } else {
+      return this.cola - son;
+    }
+  }
+
+  qabul(maxsulot, son) {
+    if (maxsulot == "non") {
+      return (this.non += son);
+    } else if (maxsulot == "lagmon") {
+      return (this.lagmon += son);
+    } else {
+      return (this.cola += son);
+    }
+  }
+  qoldiq() {
+    console.log(
+      `Hozir ${time.add(10, "minutes").format("HH:mm")} da 
+      ${this.non} ta non, ${this.lagmon} ta lagmon, ${this.cola} ta cola mavjud!`
+    );
+  }
+}
+
+
+const shop = new Shop(4, 5, 2);
+shop.qoldiq();
+shop.sotish("non", 3);
+shop.qabul("lagmon", 0);
+shop.qabul("cola", 4);
+shop.qoldiq();
 //==================================<  ASYNC  function >=============================================
 
 // ASYNC  function
-console.log("Jack Ma maslahatlari");
-const list_1 = [
-  "yahshi talaba bo'ling", //0-20
-  "togri boshliq tanlang va koproq xato qiling", // 20-30
-  "uzingiz ishlashni boshlang", // 30-40
-  "siz kuchli bo'lgan narsalarni qiling", // 40-50
-  "yoshlarga investitsiya qiling", // 50-60
-  "endi dam oling, foydasi yo'q", // 60
-];
 
-// Defination
-async function maslahatlarBering(a) {
-  if (typeof a !== "number") throw new Error("insert a number");
-  else if (a <= 20) return list_1[0];
-  else if (a > 20 && a <= 30) return list_1[1];
-  else if (a > 30 && a <= 40) return list_1[2];
-  else if (a > 40 && a <= 50) return list_1[3];
-  else if (a > 50 && a <= 60) return list_1[4];
-  else {
-    return list_1[5];
+// console.log("Jack Ma maslahatlari");
+// const list_1 = [
+//   "yahshi talaba bo'ling", //0-20
+//   "togri boshliq tanlang va koproq xato qiling", // 20-30
+//   "uzingiz ishlashni boshlang", // 30-40
+//   "siz kuchli bo'lgan narsalarni qiling", // 40-50
+//   "yoshlarga investitsiya qiling", // 50-60
+//   "endi dam oling, foydasi yo'q", // 60
+// ];
+
+// // Defination
+// async function maslahatlarBering(a) {
+//   if (typeof a !== "number") throw new Error("insert a number");
+//   else if (a <= 20) return list_1[0];
+//   else if (a > 20 && a <= 30) return list_1[1];
+//   else if (a > 30 && a <= 40) return list_1[2];
+//   else if (a > 40 && a <= 50) return list_1[3];
+//   else if (a > 50 && a <= 60) return list_1[4];
+//   else {
+//     return list_1[5];
 
       // Promise function ichida core module ishlidi setTimeout, setInterval(asyncda ishlamidi)
         // return new Promise((resolve, reject) => {     // Keyinchalik shunde qilsayam boladi
@@ -35,8 +95,8 @@ async function maslahatlarBering(a) {
     //     resolve(list_1[5]);
     //     }, 5000);
     //   });
-  }
-}
+//   }
+// }
     
 
 // Call via then/catch
@@ -65,15 +125,15 @@ async function maslahatlarBering(a) {
 
 // Call via asyn/await   bu callback promise dan qutulishga yordam beradi
 
-async function run() {                         // 2 usul bunde qib yozsa qulay boladi
-  let javob = await maslahatlarBering(20); // ASYNC fda await  javob olmaguncha keyingisiga otmidi
-  console.log(javob);
-  javob = await maslahatlarBering(31);
-  console.log(javob);
-  javob = await maslahatlarBering(41);   // bunde holat/ pr-ng da juda kop va bunde joylada async va promise f/ yordamga keladi
-  console.log(javob);
-}
-run();
+// async function run() {                         // 2 usul bunde qib yozsa qulay boladi
+//   let javob = await maslahatlarBering(20); // ASYNC fda await  javob olmaguncha keyingisiga otmidi
+//   console.log(javob);
+//   javob = await maslahatlarBering(31);
+//   console.log(javob);
+//   javob = await maslahatlarBering(41);   // bunde holat/ pr-ng da juda kop va bunde joylada async va promise f/ yordamga keladi
+//   console.log(javob);
+// }
+// run();
 
 //==================================< CALBACK function >=============================================
 
