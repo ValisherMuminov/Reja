@@ -30,7 +30,7 @@ class Shop {
     } else if (maxsulot == "lagmon") {
       return (this.lagmon -= son);
     } else {
-      return this.cola - son;
+      return this.cola -= son;
     }
   }
 
