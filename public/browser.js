@@ -1,8 +1,7 @@
 console.log("FrontEnd JS ishga tushiramiz");
 
 function itemTemplate(item) {
-  return `<li  font-size: 20px; color: white; font-weight: 500;"
-        class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
+  return `<li class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
         >
         <span class="item-text"> ${item.reja}</span>
         <div>
