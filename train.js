@@ -11,9 +11,9 @@
 function tubSon(number) {
   
   if (number % 2 == 0) {
-    return true;
-  } else {
     return false;
+  } else {
+    return true;
   }
 }
 const result = tubSon(10);
