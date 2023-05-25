@@ -1,7 +1,23 @@
 
 
+//==================================< Task - E >=============================================
+/* Task-E: shunday function tuzing unga faqat bitta musbat integer argument
+ qilib berilsin, va u ushbu argumentni tub son bolsa true aksincha false return qilsin.
+ Masalan: tubSonmi(5) return true, tubSonmi(10) return false. Tub sonlar faqat ozi va 1soniga toliq bolinadigan sonlar.*/
 
-
+// let number_x = 30;
+// number_x % 2 == 0 ? console.log("Juft son") : console.log("Toq son");
+//===========================================================================
+function tubSon(number) {
+  
+  if (number % 2 == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+const result = tubSon(10);
+console.log(result);
 //==================================< Task - D >=============================================
 
 /*  D-Task: Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin,
@@ -12,52 +28,52 @@
  shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() 10, "minutes" time
   return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!*/
 
-const moment = require("moment");
-let time = moment();
-// const minut_oldin = time.add(10, "minutes").format("HH:mm");
-// const time = moment().format("HH:mm"); 
-class Shop {
-  constructor(non, lagmon, cola) {
-    this.non = non;
-    this.lagmon = lagmon;
-    this.cola = cola;
-  }
+// const moment = require("moment");
+// let time = moment();
+// // const minut_oldin = time.add(10, "minutes").format("HH:mm");
+// // const time = moment().format("HH:mm"); 
+// class Shop {
+//   constructor(non, lagmon, cola) {
+//     this.non = non;
+//     this.lagmon = lagmon;
+//     this.cola = cola;
+//   }
  
 
-  sotish(maxsulot, son) {
-    if (maxsulot == "non") {
-      return (this.non -= son);
-    } else if (maxsulot == "lagmon") {
-      return (this.lagmon -= son);
-    } else {
-      return this.cola -= son;
-    }
-  }
+//   sotish(maxsulot, son) {
+//     if (maxsulot == "non") {
+//       return (this.non -= son);
+//     } else if (maxsulot == "lagmon") {
+//       return (this.lagmon -= son);
+//     } else {
+//       return this.cola -= son;
+//     }
+//   }
 
-  qabul(maxsulot, son) {
-    if (maxsulot == "non") {
-      return (this.non += son);
-    } else if (maxsulot == "lagmon") {
-      return (this.lagmon += son);
-    } else {
-      return (this.cola += son);
-    }
-  }
-  qoldiq() {
-    console.log(
-      `Hozir ${time.add(10, "minutes").format("HH:mm")} da 
-      ${this.non} ta non, ${this.lagmon} ta lagmon, ${this.cola} ta cola mavjud!`
-    );
-  }
-}
+//   qabul(maxsulot, son) {
+//     if (maxsulot == "non") {
+//       return (this.non += son);
+//     } else if (maxsulot == "lagmon") {
+//       return (this.lagmon += son);
+//     } else {
+//       return (this.cola += son);
+//     }
+//   }
+//   qoldiq() {
+//     console.log(
+//       `Hozir ${time.add(10, "minutes").format("HH:mm")} da 
+//       ${this.non} ta non, ${this.lagmon} ta lagmon, ${this.cola} ta cola mavjud!`
+//     );
+//   }
+// }
 
 
-const shop = new Shop(4, 5, 2);
-shop.qoldiq();
-shop.sotish("non", 3);
-shop.qabul("lagmon", 0);
-shop.qabul("cola", 4);
-shop.qoldiq();
+// const shop = new Shop(4, 5, 2);
+// shop.qoldiq();
+// shop.sotish("non", 3);
+// shop.qabul("lagmon", 0);
+// shop.qabul("cola", 4);
+// shop.qoldiq();
 //==================================<  ASYNC  function >=============================================
 
 // ASYNC  function
